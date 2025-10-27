@@ -21,6 +21,7 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          use-docker: false
 
           # The remote script to execute on the VM
           script: |
