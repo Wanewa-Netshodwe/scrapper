@@ -23,7 +23,7 @@ export async function StartScrape(
 ): Promise<string> {
   const url = scraperInput.url === "JOBMAG" ? job_urls[0] : job_urls[1];
   // show ui
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
   await page.goto(url, { waitUntil: "domcontentloaded" });
