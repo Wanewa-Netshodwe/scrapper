@@ -1,4 +1,5 @@
 export type optionScraperInput = Partial<ScraperInput>;
+
 export interface ScraperInput {
   url: "JOBMAG" | "CAREERJET";
   search_box_input_selector: string;

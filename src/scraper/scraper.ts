@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 import * as cheerio from "cheerio";
-import { optionScraperInput, ScraperInput } from "../types/types";
+import { ScraperInput } from "../types/types";
 import { JobInfo } from "../types/JobInfo";
 import { randomUUID } from "crypto";
 
@@ -112,6 +112,7 @@ function _helperExtractJobCardInfo(
     jobsProccesed.push(job_id);
   });
 }
+
 export function parseDataJobCoverPage(
   html: string,
   scraperInput: ScraperInput

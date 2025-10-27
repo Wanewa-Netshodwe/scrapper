@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/job", async (req, res) => {
   const { role } = req.body;
+  
   //css selectors
   const scraperInput: ScraperInput = {
     search_box_input_selector: "input#search-key.search-input",
@@ -20,10 +21,12 @@ router.post("/job", async (req, res) => {
     apply_link_selector: "div.mag-b.bm-b-30 > a",
     url: "JOBMAG",
   };
+
   const result = await scrapeMultiple(role, scraperInput);
- 
+
   res
     .status(200)
     .json({ message: "aight data found", role: role, data: result });
 });
+
 export default router;
