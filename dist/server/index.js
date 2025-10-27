@@ -12,8 +12,8 @@ const port = process.env.PORT;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use((0, cors_1.default)({ origin: process.env.CLIENT_ORIGIN }));
+app.use((0, cors_1.default)({ origin: "*" }));
 app.use("/api/scrape", jobScrape_1.default);
-app.listen(port, () => {
+app.listen(4500, () => {
     console.log(`server is running on port ${port}`);
 });
