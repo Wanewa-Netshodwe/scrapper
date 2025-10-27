@@ -3,26 +3,31 @@ name: Deploy Scrapper API on Push to Develop
 on:
   push:
     branches:
-      - main  # or develop if that's your actual branchjjjj
+      - main # 🎯 Triggers deployment only on push to the 'develop' branch
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Deploy to VM via SSH
-        run: |
-          echo "Starting deployment on VM..."
+        # Uses the appleboy/ssh-action to execute remote commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          # Use the secrets created in GitHub
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-          # Add your SSH private key temporarily
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          # The remote script to execute on the VM
+          script: |
+            echo "Starting deployment on VM..."
+            # Change directory to the app location
+            cd /home/khumalothato56/scrapper || exit 1
 
-          # SSH into the VM and run the deploy script
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} \
-          "cd /home/khumalothato56/scrapper && ./deploy.sh"
+            # This executes your deploy.sh script
+            /home/khumalothato56/scrapper
 
-          echo "Deployment script executed."
+            echo "Deployment script executed."
