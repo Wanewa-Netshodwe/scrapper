@@ -1,33 +1,9 @@
-name: Deploy Scrapper API on Push to Develop
+name: Test Actions
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to VM via SSH
-        # Uses the appleboy/ssh-action to execute remote commands
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          # Use the secrets created in GitHub
-          host: ${{ secrets.VM_HOST }}
-          username: ${{ secrets.VM_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-          # The remote script to execute on the VM
-          script: |
-            echo "Starting deployment on VM..."
-            # Change directory to the app location
-            cd /home/khumalothato56/scrapper || exit 1
-
-            # This executes your deploy.sh script
-            /home/khumalothato56/scrapper/deploy.sh
-
-            echo "Deployment script executed."
+      - run: echo "Hello World"
