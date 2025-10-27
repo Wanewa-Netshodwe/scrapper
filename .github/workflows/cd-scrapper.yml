@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-          # The remote script to execute on the VM
+          # The remote script to execute on the VMmmm
           script: |
             echo "Starting deployment on VM..."
             # Change directory to the app location
