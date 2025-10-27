@@ -14,7 +14,8 @@ jobs:
 
       - name: Deploy to VM via SSH
         # Uses the appleboy/ssh-action to execute remote commands
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v0.1.8
+
         with:
           # Use the secrets created in GitHub
           host: ${{ secrets.VM_HOST }}
