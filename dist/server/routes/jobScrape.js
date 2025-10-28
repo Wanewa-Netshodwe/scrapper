@@ -23,6 +23,7 @@ router.post("/job", async (req, res) => {
         url: "JOBMAG",
     };
     const result = await (0, scraper_1.scrapeMultiple)(role, scraperInput);
+    console.log(result);
     res
         .status(200)
         .json({ message: "aight data found", role: role, data: result });

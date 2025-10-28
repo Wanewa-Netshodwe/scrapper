@@ -54,7 +54,7 @@ const job_urls = [
 async function StartScrape(job_role, scraperInput) {
     const url = scraperInput.url === "JOBMAG" ? job_urls[0] : job_urls[1];
     // show ui
-    const browser = await playwright_1.chromium.launch({ headless: true });
+    const browser = await playwright_1.chromium.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "domcontentloaded" });
     await page.fill(scraperInput.search_box_input_selector, job_role);
