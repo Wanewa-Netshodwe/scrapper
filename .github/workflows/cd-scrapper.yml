@@ -3,7 +3,7 @@ name: Deploy Scrapper API on Push to Develop
 on:
   push:
     branches:
-      - main # 🎯 Triggers deployment only on push to the 'develop' branch
+      - main  # triggers deployment on push to main branch
 
 jobs:
   deploy:
@@ -13,21 +13,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy to VM via SSH
-        # Uses the appleboy/ssh-action to execute remote comdmands
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v0.1.8
         with:
-          # Use the secrets created in GitHub
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-          # The remote script to execute on the VMmmmj
+          use-docker: false  # disables Docker, runs commands directly
           script: |
             echo "Starting deployment on VM..."
-            # Change directory to the app location
             cd /home/khumalothato56/scrapper || exit 1
-
-            # This executes your deploy.sh script
-            /home/khumalothato56/scrapper
-
+            ./deploy.sh
             echo "Deployment script executed."
