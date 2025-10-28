@@ -1,9 +1,9 @@
-name: Deploy Scrapper API on Push to Develop
+name: Deploy Scrapper API 
 
 on:
   push:
     branches:
-      - main  # triggers deployment on push to main branch
+      - main  # triggers deployment on push to main branchjj
 
 jobs:
   deploy:
