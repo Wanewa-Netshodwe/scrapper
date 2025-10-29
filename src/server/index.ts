@@ -10,6 +10,6 @@ app.use(cors({ origin: "*" }));
 
 app.use("/api/scrape", scrapeRoute);
 
-app.listen(4800, () => {
+app.listen(4500, () => {
   console.log(`server is running on port 4500`);
 });
