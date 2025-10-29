@@ -1,9 +1,9 @@
-name: Deploy Scrapper API 
+name: Deploy Scrapper API
 
 on:
   push:
     branches:
-      - main  # triggers deployment on push to main branchjj
+      - main # triggers deployment on push to main branchjj
 
 jobs:
   deploy:
@@ -18,7 +18,6 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          use-docker: false  # disables Docker, runs commands directly
           script: |
             echo "Starting deployment on VM..."
             cd /home/khumalothato56/scrapper || exit 1

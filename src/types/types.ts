@@ -1,7 +1,7 @@
 export type optionScraperInput = Partial<ScraperInput>;
 
 export interface ScraperInput {
-  url: "JOBMAG" | "CAREERJET";
+  url: "JOBMAG" | "CAREERJET" | "INDEED";
   search_box_input_selector: string;
   job_report_keys_selector: string;
   search_btn_selector: string;
@@ -13,7 +13,18 @@ export interface ScraperInput {
   job_report_additional_info_selector: string;
   apply_link_selector: string;
 }
+export interface ScraperInputIndeed {
+  url: "INDEED";
+  search_box_input_selector: string;
+  search_btn_selector: string;
+  job_list_selector: string;
+  job_list_card_title_selector: string;
+  job_list_card_companyy_name_selector: string;
+  job_list_card_conpanmy_location_selector: string;
+  job_description: string;
+  apply_link_selector: string;
+}
 
 export interface MultiScrapeInput {
-  sites: ScraperInput[];
+  sites: ScraperInput[] | ScraperInputIndeed[];
 }
